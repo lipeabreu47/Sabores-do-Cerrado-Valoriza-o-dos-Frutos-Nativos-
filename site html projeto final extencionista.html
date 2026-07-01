@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sabores do Cerrado: Valorização dos Frutos Nativos</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== SEU CSS ORIGINAL (MANTIDO) ===== */
+        :root {
+            --cor-prim: #6a4c93;
+            --cor-sec: #ff8a3d;
+            --cor-ace: #27a09a;
+            --fundo: url('https://static.vecteezy.com/ti/vetor-gratis/p1/2743180-seamless-pattern-with-hand-drawn-fruits-elements-on-a-green-background-vegetarian-wallpaper-for-design-packaging-textile-background-design-postcards-and-posters-vetor.jpg');
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            background: var(--fundo);
+            background-size: cover;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(135deg, #7c52a3 0%, #ff7b54 60%, #ffd166 100%);
+            color: #fff;
+            padding: 28px 16px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 2.2rem;
+            line-height: 1.2;
+        }
+
+        nav {
+            margin-top: 8px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.25);
+            transition: transform .2s;
+        }
+
+        nav a:hover {
+            transform: translateY(-1px);
+            background: rgba(255,255,255,.35);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px 16px;
+        }
+
+        section {
+            margin: 48px 0;
+            background-color: #000;
+            color: #fff;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: #ff8a3d;
+        }
+
+        /* Hero/Apresentação */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #fff; 
+        }
+
+        .hero img {
+            width: 100%; 
+            height: 280px; 
+            object-fit: cover; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,.15);
+        }
+
+        /* Cards de frutas e receitas */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 16px; 
+        }
+
+        .card {
+            background: #fff; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 12px rgba(0,0,0,.08); 
+            border: 1px solid #eee; 
+        }
+
+        .card img { 
+            width: 100%; 
+            height: 180px; 
+            object-fit: cover; 
+            display: block; 
+        }
+
+        .card-body { 
+            padding: 12px 14px 14px; 
+        }
+
+        .card h3 { 
+            margin: 6px 0 6px; 
+            font-size: 1.05rem; 
+            color: #2a2a2a; 
+        }
+
+        .card p { 
+            margin: 0; 
+            color: #6a4c93; 
+            font-size: .95rem; 
+        }
+
+        ul { 
+            padding-left: 20px; 
+            margin: 6px 0; 
+            color: #FFD700; 
+        }
+
+        .form { 
+            display: grid; 
+            gap: 10px; 
+            max-width: 520px; 
+            width: 100%; 
+        }
+
+        label { 
+            font-size: 0.92rem; 
+            color: #333; 
+        }
+
+        input, textarea { 
+            padding: 10px 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            font-family: inherit; 
+            font-size: 1rem; 
+        }
+
+        .button { 
+            background: var(--cor-ace); 
+            color: #fff; 
+            border: none; 
+            padding: 10px 14px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+        }
+
+        .button:hover { 
+            background: #1f8d85; 
+        }
+
+        .contato-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            align-items: start; 
+        }
+
+        iframe { 
+            width: 100%; 
+            height: 260px; 
+            border: 0; 
+            border-radius: 8px; 
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 20px; 
+            color: #666; 
+            font-size: 0.92rem; 
+        }
+
+        /* ===== SEU CSS DO MASCOTE (MANTIDO) ===== */
+        #baruzinho{position:fixed;bottom:20px;right:20px;font-size:60px;cursor:pointer;z-index:999;animation:flutuar 2s infinite;}
+        #fala-baruzinho{position:absolute;bottom:80px;right:0;width:250px;background:white;color:black;padding:12px;border-radius:15px;box-shadow:0 0 10px rgba(0,0,0,.3);font-size:14px; display:none;}
+        @keyframes flutuar{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+        .quiz-btn{margin:5px;}
+
+        /* ===== NOVOS ESTILOS ADICIONAIS (NÃO MUDAM O QUE VOCÊ TEM) ===== */
+        
+        .story-board {
+            background: #fff;
+            color: #333;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 10px solid var(--cor-sec);
+            margin: 20px 0;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .mascote-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .mascote-icon {
+            font-size: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .mascote-icon:hover { transform: scale(1.2); }
+
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+        /* Estilos dos Jogos */
+        .game-container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-height: 300px;
+            border: 2px solid var(--cor-ace);
+        }
+
+        .hud {
+            display: flex;
+            justify-content: space-around;
+            background: var(--cor-prim);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .m-card {
+            height: 80px;
+            background: var(--cor-ace);
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: transparent;
+        }
+
+        .m-card.flipped { color: #fff; background: var(--cor-sec); }
+
+        .quiz-option {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .quiz-option:hover { background: var(--cor-ace); }
+
+        #wordsearch-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 2px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .letter-box {
+            width: 30px; height: 30px; background: #333;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-weight: bold; font-size: 14px;
+        }
+
+        .letter-box.found { background: var(--cor-sec); }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #fff;
+            margin-top: 10px;
+        }
+        .ranking-table th, .ranking-table td { padding: 10px; border-bottom: 1px solid #333; }
+
+        #timer { font-size: 30px; color: #ff4757; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sabores do Cerrado: Valorização dos Frutos Nativos</h1>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#frutos">Frutos Nativos</a>
+            <a href="#receitas">Receitas</a>
+            <a href="#dados">Dados Nutricionais</a>
+            <a href="#contato">Contato</a>
+            <a href="#localizacao">Localização</a>
+            <a href="#ameacas">Ameaças ao Cerrado</a>
+            <a href="#quiz">Quiz Original</a>
+            <a href="#mundo-mascotes">🌟 Mundo Mascotes</a>
+            <a href="#area-jogos">🎮 Jogos Pro</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="sobre" aria-labelledby="titulo-sobre">
+            <h2 class="section-title" id="titulo-sobre">Sobre o site</h2>
+            <div class="hero" aria-label="Apresentação do site">
+                <div>
+                    <p>O projeto <strong>"Sabores do Cerrado: Valorização dos Frutos Nativos"</strong> foi desenvolvido com o objetivo de promover a valorização, a preservação e a divulgação da rica biodiversidade presente no bioma Cerrado brasileiro, utilizando a tecnologia como ferramenta principal de educação, conscientização e interação social. A proposta do site vai além da simples apresentação de informações sobre frutos nativos, plantas medicinais e espécies características da região, buscando despertar a curiosidade, o interesse e o desejo de aprofundamento no conhecimento sobre um dos biomas mais importantes e biodiversos do planeta.
+
+A ideia central do projeto é demonstrar que o aprendizado pode ocorrer de forma dinâmica, acessível e envolvente, aproximando diferentes gerações dos temas ambientais por meio de recursos tecnológicos modernos e interativos. Ao apresentar informações resumidas, organizadas e de fácil compreensão, o site estimula os visitantes a pesquisarem mais profundamente sobre o Cerrado, suas riquezas naturais, sua importância ecológica e os desafios enfrentados para sua conservação.
+
+Além do conteúdo informativo, o projeto incorpora jogos educativos, desafios interativos, quizzes, histórias narradas por mascotes e atividades lúdicas, criando uma experiência mais atrativa para crianças, adolescentes e adultos. Essa abordagem busca aproximar as novas gerações das questões ambientais, despertando o interesse pela preservação da natureza e incentivando a construção de uma consciência ecológica desde cedo. A utilização de elementos visuais, personagens e mecanismos de gamificação contribui para tornar o processo de aprendizagem mais divertido, participativo e memorável.
+
+Outro aspecto importante deste projeto é evidenciar como a área de Tecnologia da Informação (TI) possui capacidade para contribuir significativamente com a educação ambiental, a divulgação científica e a preservação do patrimônio natural. Por meio do desenvolvimento de sistemas, plataformas digitais, jogos educacionais, bancos de dados, inteligência artificial, aplicações web e ferramentas interativas, a Tecnologia da Informação pode atuar como uma poderosa aliada na democratização do conhecimento e na formação de cidadãos mais conscientes e comprometidos com o meio ambiente.
+
+O projeto demonstra que profissionais e estudantes da área de TI podem utilizar seus conhecimentos técnicos para criar soluções inovadoras capazes de unir tecnologia, educação, ciência e sustentabilidade. Dessa forma, a tecnologia deixa de ser apenas uma ferramenta operacional e passa a atuar como um instrumento de transformação social, permitindo ampliar o alcance das informações, fortalecer ações educativas e incentivar práticas de preservação ambiental.
+
+Ao integrar conhecimento científico, cultura regional, tecnologia e entretenimento educativo, o <strong>"Sabores do Cerrado: Valorização dos Frutos Nativos"</strong> busca contribuir para a valorização do bioma Cerrado, incentivar a pesquisa, despertar a curiosidade científica e aproximar a sociedade da importância da conservação dos recursos naturais. Mais do que um site informativo, este projeto representa uma proposta de inovação educacional, demonstrando que a tecnologia pode ser utilizada para construir conhecimento, promover a sustentabilidade e inspirar futuras gerações a protegerem o patrimônio natural brasileiro.
+
+.</p>
+                </div>
+                <img src="https://legadoverde.com.br/wp-content/uploads/2022/03/10-frutos-nativos-CE.jpg" alt="Vasta imagem de frutas do Cerrado" />
+            </div>
+        </section>
+<section id="video-projeto">
+    <h2 class="section-title">🎥 Vídeo das Rodas de Conversa e Apresentação do Projeto</h2>
+
+    <p style="text-align:center; color:#fff;">
+        Este vídeo apresenta as rodas de conversa realizadas durante a atividade extensionista
+        "Sabores do Cerrado: Valorização dos Frutos Nativos", destacando a participação da
+        comunidade, as discussões desenvolvidas e a importância da preservação do Cerrado.
+    </p>
+
+    <div style="display:flex; justify-content:center; margin-top:20px;">
+        <iframe
+            width="800"
+            height="450"
+            src="https://www.youtube.com/embed/R-gc6EYjve8"
+            title="Vídeo do Projeto Sabores do Cerrado"
+            allowfullscreen
+            style="max-width:100%; border-radius:15px;">
+        </iframe>
+    </div>
+</section>
+        <section id="frutas" aria-labelledby="titulo-frutas">
+            <h2 class="section-title" id="titulo-frutas">Frutas Nativas do Cerrado</h2>
+            <div class="grid">
+                <article class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtdUPUKUoZRnYVRhbmwAVCLdxEQl77fHKYMF32dRPNw&s=10" alt="Pequi">
+                    <div class="card-body">
+                        <h3>Pequi (Caryocar brasiliense)</h3>
+                        <p>Fruta oleaginosa típica do Cerrado, com sabor marcante. Comumente usada em arroz com pequi ou consumida in natura durante a época sazonal.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_657790-MLB79913263651_102024-O.webp" alt="Baru">
+                    <div class="card-body">
+                        <h3>Baru (Dipteryx alata)</h3>
+                        <p>Núcleo saboroso usado em doces, licores e farinhas; excelente fonte de proteínas vegetais.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJXZH-8S90m837IJ_2lYFW-XpZ_itnaFcmbWdl6MIJlWo-_2iDBYrin52-eZK6mnTreoAhvOJQUlgKjSnGt5bPiGJ5wlithP-nodNdF0j5c67ynDImHJEUM5iEav4Fgr-eu5KxolygsB8/s1600/Guabiroba+do+litoral+campomanesia+xanthocarpa+litoralis+mudas.jpg" alt="Gabiroba">
+                    <div class="card-body">
+                        <h3>Gabiroba (Campomanesia spp.)</h3>
+                        <p>Fruta doce, comumente consumida in natura ou em geleias e sucos.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdbElitTt2JxUutpJlTi8DbKLv601S3FJDxDiSP_rYqvJVLTD2D2D_I5KwKbc4s4y1fWY&usqp=CAU" alt="Cagaita">
+                    <div class="card-body">
+                        <h3>Cagaita (Eugenia dysenterica)</h3>
+                        <p>Fruta ácida, muito usada em sucos, geleias e sobremesas regionais.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://i.pinimg.com/474x/59/10/e2/5910e2dfdf058bd4ad1560462218d622.jpg" alt="Araticum">
+                    <div class="card-body">
+                        <h3>Araticum (Annona crassiflora)</h3>
+                        <p>Polpa cremosa, apreciada em doces, sorvetes e sucos.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqn3VPsFUlGoM5zR4r-ICvZFlauolT5thGZ1oOMV78BQ&s=10" alt="Murici">
+                    <div class="card-body">
+                        <h3>Murici (Byrsonima crassifolia)</h3>
+                        <p>Fruta pequena, utilizada em doces, sucos e licores regionais.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="receitas" aria-labelledby="titulo-receitas">
+            <h2 class="section-title" id="titulo-receitas">Receitas com Frutas do Cerrado</h2>
+            <div class="grid">
+                <article class="card">
+                    <img src="https://cdn.casaeculinaria.com/wp-content/uploads/2024/01/30094922/Arroz-com-pequi.webp" alt="Arroz com Pequi">
+                    <div class="card-body">
+                        <h3>Arroz com Pequi</h3>
+                        <p>Arroz cozido com pequi, alho e cebola, finalizado com cheiro verde para um prato aromático típico do Cerrado.</p>
+                        <strong>Ingredientes:</strong>
+                        <ul>
+                            <li>1 xícara de arroz</li>
+                            <li>1 xícara de pequi em conserva</li>
+                            <li>2 colheres de azeite</li>
+                            <li>Sal a gosto</li>
+                        </ul>
+                        <strong>Modo de preparo:</strong>
+                        <p style="color: #6a4c93;">Refogue o alho e a cebola no azeite, acrescente o arroz e água. Adicione o pequi nos últimos minutos e tempere.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://i.ytimg.com/vi/R6jNGxJY-UI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLATuzRGm1oJZCSJvYm6TiHpILnGIw" alt="Geleia de Gabiroba">
+                    <div class="card-body">
+                        <h3>Geleia de Gabiroba</h3>
+                        <p>Geleia doce feita com Gabiroba, ótima para acompanhar pães.</p>
+                        <strong>Ingredientes:</strong>
+                        <ul>
+                            <li>Gabiroba fresca</li>
+                            <li>Açúcar</li>
+                            <li>Suco de limão</li>
+                        </ul>
+                        <strong>Modo de preparo:</strong>
+                        <p style="color: #6a4c93;">Reduza as frutas com açúcar até obter consistência de geleia; acrescente o limão ao final.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="dados" aria-labelledby="titulo-dados">
+            <h2 class="section-title" id="titulo-dados">Dados Nutricionais e Características</h2>
+            <p>Aqui reunimos informações sobre valor nutricional, sazonalidade, formas de consumo e usos tradicionais das frutas citadas.</p>
+            <ul>
+                <li>Pequi: rico em gorduras saudáveis; sazonal de setembro a fevereiro.</li>
+                <li>Baru: alto conteúdo proteico; comum no verão; pode ser consumido cru ou em farinhas.</li>
+                <li>Gabiroba: fonte de vitaminas; sabor doce; sazonalidade regional.</li>
+                <li>Cagaita: fruta ácida; usada em sucos e geleias; disponível na estação seca.</li>
+                <li>Araticum: polpa cremosa; popular em doces e sorvetes regionais.</li>
+                <li>Murici: fruta pequena e aromática; usada em sucos e licores.</li>
+            </ul>
+
+            <h3>🐜 Comparação Nutricional</h3>
+            <table style="width:100%;border-collapse:collapse;text-align:center;">
+                <tr style="background:#27a09a;color:white;"><th>Fruta</th><th>Vitamina C</th><th>Fibras</th><th>Proteínas</th><th>Calorias</th></tr>
+                <tr><td>Pequi</td><td>Alta</td><td>Média</td><td>Média</td><td>205 kcal</td></tr>
+                <tr><td>Baru</td><td>Média</td><td>Alta</td><td>Alta</td><td>502 kcal</td></tr>
+                <tr><td>Gabiroba</td><td>Alta</td><td>Média</td><td>Baixa</td><td>65 kcal</td></tr>
+                <tr><td>Cagaita</td><td>Alta</td><td>Média</td><td>Baixa</td><td>35 kcal</td></tr>
+                <tr><td>Araticum</td><td>Média</td><td>Alta</td><td>Baixa</td><td>110 kcal</td></tr>
+            </table>
+<hr style="margin:30px 0;border:1px solid #27a09a;">
+
+<h3 style="color:#ff8a3d;">🌿 Árvores e Frutos Medicinais do Cerrado</h3>
+
+<p>O Cerrado brasileiro é considerado uma verdadeira farmácia natural. Diversas árvores e frutos são utilizados tradicionalmente por comunidades locais e povos indígenas devido às suas propriedades medicinais.</p>
+
+<div class="grid">
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🌳 Barbatimão</h3>
+            <p><strong>Nome científico:</strong> Stryphnodendron adstringens</p>
+            <p><strong>Parte utilizada:</strong> Casca</p>
+            <p><strong>Uso tradicional:</strong> Cicatrização, tratamento de feridas, inflamações e problemas de pele.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🌳 Sucupira</h3>
+            <p><strong>Nome científico:</strong> Pterodon emarginatus</p>
+            <p><strong>Parte utilizada:</strong> Sementes e casca</p>
+            <p><strong>Uso tradicional:</strong> Dores articulares, artrite, reumatismo e inflamações.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🌳 Ipê-roxo</h3>
+            <p><strong>Nome científico:</strong> Handroanthus impetiginosus</p>
+            <p><strong>Parte utilizada:</strong> Casca</p>
+            <p><strong>Uso tradicional:</strong> Ação anti-inflamatória e antimicrobiana.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🌳 Aroeira</h3>
+            <p><strong>Nome científico:</strong> Myracrodruon urundeuva</p>
+            <p><strong>Parte utilizada:</strong> Casca e folhas</p>
+            <p><strong>Uso tradicional:</strong> Cicatrização e tratamento de inflamações.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🥭 Pequi</h3>
+            <p><strong>Benefícios:</strong> Rico em vitaminas A e C e antioxidantes.</p>
+            <p><strong>Uso tradicional:</strong> Fortalecimento da imunidade e saúde respiratória.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🌰 Baru</h3>
+            <p><strong>Benefícios:</strong> Rico em proteínas, minerais e antioxidantes.</p>
+            <p><strong>Uso tradicional:</strong> Fortalecimento muscular e saúde cardiovascular.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🍈 Araticum</h3>
+            <p><strong>Benefícios:</strong> Rico em fibras e compostos antioxidantes.</p>
+            <p><strong>Uso tradicional:</strong> Auxílio digestivo e fortalecimento do organismo.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🍋 Cagaita</h3>
+            <p><strong>Benefícios:</strong> Rica em vitamina C.</p>
+            <p><strong>Uso tradicional:</strong> Auxílio digestivo e propriedades antioxidantes.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🍯 Jatobá</h3>
+            <p><strong>Parte utilizada:</strong> Fruto e casca.</p>
+            <p><strong>Uso tradicional:</strong> Fortalecimento do organismo e saúde respiratória.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🥥 Buriti</h3>
+            <p><strong>Benefícios:</strong> Rico em vitamina A e antioxidantes.</p>
+            <p><strong>Uso tradicional:</strong> Saúde da pele, visão e fortalecimento imunológico.</p>
+        </div>
+    </article>
+
+    <article class="card">
+        <div class="card-body">
+            <h3>🍇 Guavira</h3>
+            <p><strong>Nome científico:</strong> Campomanesia adamantium</p>
+            <p><strong>Uso tradicional:</strong> Consumo nutritivo e ação antioxidante.</p>
+        </div>
+    </article>
+
+</div>
+
+<div style="margin-top:20px;padding:15px;background:#1a1a1a;border-left:5px solid #27a09a;border-radius:8px;">
+    <p style="color:#FFD700;margin:0;">
+        🌿 <strong>Curiosidade:</strong> O Cerrado abriga milhares de espécies com potencial medicinal e é considerado uma das maiores farmácias naturais do planeta. Muitos conhecimentos sobre essas plantas foram preservados por povos indígenas e comunidades tradicionais.
+    </p>
+</div>
+
+<p style="margin-top:15px;color:#aaa;font-size:0.9rem;">
+    Fonte: Embrapa Cerrados, Ministério do Meio Ambiente e estudos etnobotânicos do Cerrado brasileiro.
+</p>
+            <p style="margin-top:15px;">🐜 <strong>Tamy:</strong> "Cada fruta possui benefícios únicos para nossa saúde!"</p>
+        </section>
+
+        <section id="ameacas">
+            <h2 class="section-title">⚠️ Ameaças ao Cerrado</h2>
+            <div class="grid">
+                <article class="card"><div class="card-body"><h3>🔥 Queimadas</h3><p>Incêndios descontrolados prejudicam a fauna, a flora e o solo.</p></div></article>
+                <article class="card"><div class="card-body"><h3>🪓 Desmatamento</h3><p>A retirada da vegetação reduz a biodiversidade.</p></div></article>
+                <article class="card"><div class="card-body"><h3>🚜 Expansão agrícola</h3><p>O avanço desordenado ameaça espécies nativas do Cerrado.</p></div></article>
+                <article class="card"><div class="card-body"><h3>💧 Redução das nascentes</h3><p>O Cerrado é conhecido como o "berço das águas" do Brasil.</p></div></article>
+            </div>
+            <p style="margin-top:20px;">🦊 <strong>Lobito:</strong> "Preservar o Cerrado é preservar a vida!"</p>
+        </section>
+
+        <section id="quiz">
+    <h2 class="section-title">🦊 Corrida do Guardião do Cerrado</h2>
+
+    <div id="gameArea" style="
+        position:relative;
+        width:100%;
+        max-width:900px;
+        height:250px;
+        margin:auto;
+        background:linear-gradient(#87CEEB,#d9b97a);
+        overflow:hidden;
+        border:3px solid #27a09a;
+        border-radius:10px;">
+
+        <!-- Mascote -->
+        <div id="player" style="
+            position:absolute;
+            bottom:20px;
+            left:60px;
+            font-size:55px;">
+            🦊
+        </div>
+
+        <!-- Obstáculo -->
+        <div id="obstacle" style="
+            position:absolute;
+            bottom:20px;
+            right:-50px;
+            font-size:50px;">
+            🌳
+        </div>
+
+        <div id="mensagemCerrado"
+     style="
+     position:absolute;
+     bottom:5px;
+     width:100%;
+     text-align:center;
+     color:#ffffff;
+     font-weight:bold;
+     text-shadow:2px 2px 4px black;
+     font-size:14px;">
+     Pressione V para iniciar
+</div>    
+
+    <p style="text-align:center;margin-top:15px;">
+        Pressione <strong>V</strong> para pular.
+    </p>
+</section>
+        <section id="mundo-mascotes">
+            <h2 class="section-title">📖 O Mundo dos Mascotes: Histórias do Bioma</h2>
+            <p style="text-align: center;">Clique em um mascote para ouvir suas longas histórias sobre o Cerrado!</p>
+            <div class="mascote-selector">
+                <div class="mascote-icon" onclick="verHistoria('baruzinho')">🌰</div>
+                <div class="mascote-icon" onclick="verHistoria('lobito')">🦊</div>
+                <div class="mascote-icon" onclick="verHistoria('tamy')">🐜</div>
+            </div>
+
+            <div id="historia-baruzinho" class="story-board">
+                <h3 style="color:var(--cor-sec)">🌰 A Jornada do Baruzinho: O Pequeno Gigante</h3>
+                <p>Olá, amiguinhos! Eu sou o Baruzinho, e minha história começa no coração do Brasil Central. Eu nasci de uma árvore majestosa chamada Baru (Dipteryx alata), que pode viver centenas de anos! Antigamente, eu era conhecido apenas pelas comunidades locais, que sabiam do meu segredo: dentro da minha polpa dura, escondo uma castanha que é uma verdadeira joia nutricional.</p>
+                <p>Minha árvore é muito forte e ajuda a recuperar terras cansadas. Eu viajo longe quando os animais, como a anta e o morcego, me carregam. Eu represento a resiliência do Cerrado: sou duro por fora para proteger a vida que carrego por dentro. Hoje, pessoas do mundo todo vêm me procurar para ganhar energia e saúde, mas eu nunca esqueço minhas raízes no Assentamento Andalucia!</p>
+            </div>
+
+            <div id="historia-lobito" class="story-board">
+                <h3 style="color:var(--cor-sec)">🦊 Lobito Guará: O Guardião das Veredas</h3>
+                <p>Eu sou o Lobito, um Lobo-guará, o maior canídeo da América do Sul! Minha história é ligada às águas. O Cerrado é a "Caixa d'água do Brasil" porque aqui nascem rios que alimentam todo o continente. Eu ando por km e km todos os dias, com minhas pernas longas, vigiando as Veredas – aqueles oásis cheios de Buritis que vocês viram lá em cima.</p>
+                <p>Antigamente, tínhamos espaço de sobra, mas hoje as cercas e as estradas atrapalham minha caminhada. Eu sou um semeador natural! Quando eu como a Lobeira (uma frutinha que eu adoro), eu espalho as sementes pela mata enquanto ando, ajudando o Cerrado a renascer. Minha missão é lembrar vocês que cada árvore derrubada é uma casa a menos para mim e um balde a menos de água para o futuro.</p>
+            </div>
+
+            <div id="historia-tamy" class="story-board">
+                <h3 style="color:var(--cor-sec)">🐜 Tamy: A Pequena Cientista da Nutrição</h3>
+                <p>Oi! Eu sou a Tamy, uma formiguinha muito curiosa. Minha história acontece bem pertinho do chão, onde a mágica dos nutrientes começa. Eu passo o dia todo analisando as frutas que caem das árvores. Vocês sabiam que o Cerrado é uma farmácia natural? Milênios atrás, os povos indígenas já usavam nossas frutas para curar doenças antes mesmo das cidades existirem.</p>
+                <p>Eu descobri que o Pequi tem tanta Vitamina A que ajuda a ver melhor no escuro, e que a Cagaita tem um poder incrível de limpeza. Minha luta diária é mostrar que o Cerrado não é "terra seca", mas sim um laboratório de vida. Se protegermos os pequenos detalhes, como os polinizadores e os fungos do solo, teremos frutas ricas e saudáveis para sempre nas mesas de vocês!</p>
+            </div>
+            <p style="font-size: 0.8rem; text-align: right; color:#888;">Fontes: Embrapa Cerrados, WWF Brasil e Saberes Tradicionais.</p>
+        </section>
+
+        <section id="area-jogos">
+            <h2 class="section-title">🎮 Academia do Guardião do Cerrado</h2>
+            <div class="hud">
+                <span>🏆 PONTOS: <span id="game-score">0</span></span>
+                <span>🥇 RANK: <span id="game-rank">Iniciante</span></span>
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
+                <button class="button" onclick="initQuizPro()">Quiz de 30 Perguntas</button>
+                <button class="button" onclick="initMemory()">Jogo da Memória</button>
+                <button class="button" onclick="initCaca()">Caça-Palavras</button>
+                <button class="button" onclick="initContraTempo()">Contra o Tempo ⏱️</button>
+            </div>
+
+            <div id="game-canvas" class="game-container">
+                <p>Selecione um jogo para ganhar pontos e subir no ranking!</p>
+            </div>
+
+            <div id="ranking-box" style="margin-top:30px; display:none;">
+                <h3 style="color:var(--cor-sec)">🥇 Ranking dos Guardiões</h3>
+                <table class="ranking-table">
+                    <thead><tr><th>Lugar</th><th>Nome</th><th>Pontos</th></tr></thead>
+                    <tbody id="ranking-body">
+                        <tr><td>1º</td><td>Baruzinho</td><td>5000</td></tr>
+                        <tr><td>2º</td><td>Você</td><td id="user-pts">0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+<section id="contato" aria-labelledby="titulo-contato">
+    <h2 class="section-title" id="titulo-contato">Contato</h2>
+    <div class="contato-grid" aria-label="Contato e localização">
+
+        <!-- Formulário com redirecionamento para Gmail -->
+        <form class="form"
+              action="mailto:feli00243@gmail.com"
+              method="post"
+              enctype="text/plain">
+
+            <label for="nome">Nome</label>
+            <input id="nome" name="Nome" type="text" required class="input" />
+
+            <label for="email">E-mail</label>
+            <input id="email" name="E-mail" type="email" required class="input" />
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="Mensagem" rows="5" required class="textarea"></textarea>
+
+            <button class="button" type="submit">
+                📧 Enviar para o Gmail
+            </button>
+        </form>
+
+        <!-- Nova localização -->
+        <div aria-labelledby="titulo-endereco" style="align-self: start;">
+            <h3 id="titulo-endereco" style="margin-top:0; color:var(--cor-sec)">
+                📍 Nioaque - MS | CEP: 79220-000
+            </h3>
+
+            <p style="color:#fff;">
+                Localização oficial do projeto:<br>
+                <strong>Nioaque - Mato Grosso do Sul</strong><br>
+                CEP: <strong>79220-000</strong>
+            </p>
+
+            <iframe
+                src="https://www.google.com/maps?q=Nioaque+Mato+Grosso+do+Sul&output=embed"
+                title="Mapa de Nioaque MS"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+            <div style="
+                margin-top:15px;
+                background:#1a1a1a;
+                padding:15px;
+                border-radius:10px;
+                border-left:5px solid #27a09a;
+                color:white;">
+
+                🐵 <strong>Macaquinho Informativo:</strong><br>
+                Para mais informações, entre em contato pelo Gmail:<br>
+                <a href="mailto:feli00243@gmail.com"
+                   style="color:#FFD700;text-decoration:none;">
+                   ✉️ feli00243@gmail.com
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer>
+    <p>©️ 2025 Sabores do Cerrado. Todos os direitos reservados.</p>
+    <p>
+        Desenvolvido por
+        <strong>Felipe Luiz Da Costa De Abreu</strong>
+    </p>
+    <p>
+        📍 Nioaque - MS | CEP: 79220-000
+    </p>
+    <p>
+        ✉️ Contato:
+        <a href="mailto:feli00243@gmail.com"
+           style="color:#27a09a;">
+           feli00243@gmail.com
+        </a>
+    </p>
+</footer>
+
+    <div id="baruzinho">🌰
+        <div id="fala-baruzinho">Olá! Eu sou o Baruzinho, dono deste site! 🌿<br>Vamos explorar as riquezas do Cerrado juntos!</div>
+    </div>
+
+    <script>
+        /* JS ORIGINAL (MANTIDO) */
+        const mensagens=["🌰 Bem-vindo ao Sabores do Cerrado!","🦜 Conheça curiosidades sobre nossas frutas!","🦊 Descubra as ameaças ao Cerrado.","🐜 Veja os benefícios nutricionais.","🎮 Faça o quiz e torne-se um Guardião do Cerrado!"];
+        let indice=0;
+        document.getElementById("baruzinho").onclick=function(){
+            const fala = document.getElementById("fala-baruzinho");
+            fala.style.display = fala.style.display === "block" ? "none" : "block";
+            fala.innerHTML=mensagens[indice];
+            indice=(indice+1)%mensagens.length;
+        };
+     const player = document.getElementById("player");
+const obstacle = document.getElementById("obstacle");
+const scoreText = document.getElementById("score");
+
+let jumping = false;
+let score = 0;
+
+function jump() {
+    if (jumping) return;
+
+    jumping = true;
+    let pos = 20;
+
+    let up = setInterval(() => {
+        if (pos >= 130) {
+            clearInterval(up);
+
+            let down = setInterval(() => {
+                if (pos <= 20) {
+                    clearInterval(down);
+                    jumping = false;
+                }
+                pos -= 5;
+                player.style.bottom = pos + "px";
+            }, 20);
+
+        } else {
+            pos += 5;
+            player.style.bottom = pos + "px";
+        }
+    }, 20);
+}
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key.toLowerCase()=="v"){
+
+        if(!jogoIniciado){
+            jogoIniciado = true;
+            document.getElementById(
+                "mensagemCerrado"
+            ).innerHTML =
+            frases[Math.floor(
+                Math.random()*frases.length
+            )];
+        }
+
+        jump();
+    }
+
+});
+let obstaclePos = 900;
+
+let jogoIniciado = false;
+
+const frases = [
+    "🌿 Preservar o Cerrado é proteger a biodiversidade.",
+    "💧 O Cerrado é conhecido como o berço das águas.",
+    "🦊 O Lobo-guará ajuda a espalhar sementes.",
+    "🌳 Cada árvore preservada é uma vida protegida.",
+    "🔥 Evitar queimadas protege fauna e flora.",
+    "🌰 As frutas do Cerrado possuem grande valor nutricional."
+];
+
+setInterval(()=>{
+
+    if(!jogoIniciado)
+        return;
+    obstaclePos -= 8;
+
+    if (obstaclePos < -50) {
+        obstaclePos = 900;
+        score += 10;
+        scoreText.innerHTML = "Pontos: " + score;
+
+        const obs = ["🌳","🔥","🪨"];
+        obstacle.innerHTML =
+            obs[Math.floor(Math.random()*obs.length)];
+    }
+
+    obstacle.style.left = obstaclePos + "px";
+
+    const playerBottom = parseInt(player.style.bottom) || 20;
+
+    if (obstaclePos > 40 &&
+        obstaclePos < 100 &&
+        playerBottom < 70) {
+
+        alert(
+            "Fim de jogo! Você fez "
+            + score +
+            " pontos."
+        );
+
+        score = 0;
+        obstaclePos = 900;
+jogoIniciado = false;
+
+document.getElementById(
+    "mensagemCerrado"
+).innerHTML =
+"Pressione V para jogar novamente";
+        scoreText.innerHTML = "Pontos: 0";
+    }
+
+}, 20);
+
+        /* JS DOS NOVOS RECURSOS (ADICIONADO) */
+        
+        // --- SISTEMA DE PONTOS ---
+        let gameScore = 0;
+        function updateScore(pts) {
+            gameScore += pts;
+            document.getElementById("game-score").innerText = gameScore;
+            document.getElementById("user-pts").innerText = gameScore;
+            document.getElementById("ranking-box").style.display = "block";
+            
+            if(gameScore >= 500) document.getElementById("game-rank").innerText = "Protetor";
+            if(gameScore >= 1000) {
+                document.getElementById("game-rank").innerText = "Guardião Master";
+                confetti(); // Efeito de vitória
+            }
+        }
+
+        // --- SISTEMA DE HISTÓRIAS ---
+        function verHistoria(m) {
+            document.querySelectorAll('.story-board').forEach(b => b.style.display = 'none');
+            document.getElementById('historia-' + m).style.display = 'block';
+            window.location.hash = 'mundo-mascotes';
+        }
+
+        // --- JOGO: QUIZ 30 PERGUNTAS ---
+        const bancoPerguntas = [
+            {q: "O Cerrado é o segundo maior bioma do Brasil?", a: true},
+            {q: "O Pequi tem espinhos dentro do caroço?", a: true},
+            {q: "O Baru nasce debaixo da terra?", a: false},
+            {q: "Cagaita pode soltar o intestino se comida quente ao sol?", a: true},
+            {q: "O Cerrado é a savana mais biodiversa do mundo?", a: true},
+            {q: "O Lobo Guará é um animal que voa?", a: false},
+            {q: "As raízes do cerrado são muito curtas?", a: false},
+            {q: "A árvore de Jatobá produz farinha energética?", a: true},
+            {q: "O fogo natural nunca existiu no cerrado?", a: false},
+            {q: "O Baru é parente do amendoim?", a: true},
+            {q: "A Mangaba é usada para fazer sorvetes?", a: true},
+            {q: "O Buriti gosta de lugares secos?", a: false},
+            {q: "O solo do cerrado é naturalmente rico em minerais?", a: false},
+            {q: "O Araticum também é chamado de Marolo?", a: true},
+            {q: "O cerrado alimenta 3 grandes bacias hidrográficas?", a: true},
+            {q: "A castanha de baru deve ser comida sempre crua?", a: false},
+            {q: "A flora do cerrado tem mais de 10 mil espécies?", a: true},
+            {q: "O bioma está totalmente protegido hoje?", a: false},
+            {q: "O tamanduá bandeira come formigas?", a: true},
+            {q: "A árvore de Pequi pode viver mais de 100 anos?", a: true},
+            {q: "O Murici é usado apenas para lenha?", a: false},
+            {q: "A Gabiroba é parente da goiaba?", a: true},
+            {q: "O cerrado é chamado de 'floresta invertida'?", a: true},
+            {q: "O desmatamento não afeta as águas?", a: false},
+            {q: "O bioma ocupa 24% do Brasil?", a: true},
+            {q: "As árvores do cerrado têm casca fina?", a: false},
+            {q: "O suco de cagaita é rico em vitamina C?", a: true},
+            {q: "O baru produz óleo para a pele?", a: true},
+            {q: "O jatobá tem casca que serve como remédio?", a: true},
+            {q: "A onça pintada não vive no cerrado?", a: false}
+        ];
+
+        function initQuizPro() {
+            let quest = bancoPerguntas.sort(() => 0.5 - Math.random()).slice(0, 10);
+            let index = 0;
+            let hits = 0;
+
+            function show() {
+                const canvas = document.getElementById("game-canvas");
+                canvas.innerHTML = `
+                    <h3>Pergunta ${index+1}/10</h3>
+                    <p style="font-size:1.2rem;">${quest[index].q}</p>
+                    <button class="quiz-option" onclick="checkPro(true)">Verdadeiro</button>
+                    <button class="quiz-option" onclick="checkPro(false)">Falso</button>
+                `;
+            }
+
+            window.checkPro = (val) => {
+                if(val === quest[index].a) { hits++; updateScore(50); }
+                index++;
+                if(index < 10) show();
+                else {
+                    document.getElementById("game-canvas").innerHTML = `<h3>Fim! Você acertou ${hits}/10! Ganhou ${hits*50} pontos!</h3>`;
+                }
+            };
+            show();
+        }
+
+        // --- JOGO: MEMÓRIA ---
+        function initMemory() {
+            const icons = ['🍎','🍎','🍍','🍍','🥥','🥥','🍇','🍇','🥭','🥭','🍒','🍒','🍉','🍉','🥝','🥝'];
+            let baralhado = icons.sort(() => 0.5 - Math.random());
+            document.getElementById("game-canvas").innerHTML = '<div class="memory-grid" id="m-grid"></div>';
+            const grid = document.getElementById("m-grid");
+            let flipped = [];
+
+            baralhado.forEach(icon => {
+                const card = document.createElement('div');
+                card.className = 'm-card';
+                card.dataset.icon = icon;
+                card.onclick = function() {
+                    if(this.classList.contains('flipped') || flipped.length === 2) return;
+                    this.classList.add('flipped'); this.innerText = icon;
+                    flipped.push(this);
+                    if(flipped.length === 2) {
+                        if(flipped[0].dataset.icon === flipped[1].dataset.icon) {
+                            updateScore(100); flipped = [];
+                        } else {
+                            setTimeout(() => {
+                                flipped.forEach(c => { c.classList.remove('flipped'); c.innerText = ''; });
+                                flipped = [];
+                            }, 800);
+                        }
+                    }
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        // --- JOGO: CONTRA O TEMPO ---
+        function initContraTempo() {
+            let tempo = 10;
+            let p = bancoPerguntas[Math.floor(Math.random()*bancoPerguntas.length)];
+            const canvas = document.getElementById("game-canvas");
+            canvas.innerHTML = `<h3>Responda em 10 segundos!</h3><div id="timer">10</div><p>${p.q}</p>
+            <button class="button" onclick="checkTime(true, ${p.a})">Verdadeiro</button>
+            <button class="button" onclick="checkTime(false, ${p.a})">Falso</button>`;
+            
+            let clock = setInterval(() => {
+                tempo--;
+                document.getElementById("timer").innerText = tempo;
+                if(tempo <= 0) {
+                    clearInterval(clock);
+                    canvas.innerHTML = "<h3>Tempo esgotado! Tente novamente.</h3>";
+                }
+            }, 1000);
+
+            window.checkTime = (user, correct) => {
+                clearInterval(clock);
+                if(user === correct) {
+                    updateScore(200);
+                    canvas.innerHTML = "<h3>Correto e Rápido! +200 pontos</h3>";
+                } else {
+                    canvas.innerHTML = "<h3>Errou! Tente o próximo.</h3>";
+                }
+            };
+        }
+
+        // --- JOGO: CAÇA PALAVRAS (Simples) ---
+        function initCaca() {
+            const container = document.getElementById("game-canvas");
+            container.innerHTML = `<h3>Ache a palavra: PEQUI</h3><div id="wordsearch-grid"></div>`;
+            const grid = document.getElementById("wordsearch-grid");
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for(let i=0; i<100; i++) {
+                const box = document.createElement('div');
+                box.className = 'letter-box';
+                box.innerText = letters[Math.floor(Math.random()*26)];
+                box.onclick = function() {
+                    this.classList.toggle('found');
+                    if(document.querySelectorAll('.found').length === 5) {
+                        updateScore(300);
+                        container.innerHTML = "<h3>Parabéns! +300 pontos</h3>";
+                    }
+                };
+                grid.appendChild(box);
+            }
+            // Força a palavra PEQUI em algum lugar
+            const p = [10,11,12,13,14]; const w = "PEQUI";
+            p.forEach((idx, i) => grid.children[idx].innerText = w[i]);
+        }
+    </script>
+</body>
+</html>
